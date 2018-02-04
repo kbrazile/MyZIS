@@ -10,7 +10,45 @@ class ScheduleScreen extends StatefulWidget {
   ScheduleScreenState createState() => new ScheduleScreenState();
 }
 
-class ScheduleScreenState extends State<ScheduleScreen>{
+class Choice {
+  const Choice({this.title, this.icon});
+  final String title;
+  final IconData icon;
+}
+
+const List<Choice> choices = const <Choice>[
+  const Choice(title: 'Monday', icon: Icons.directions_car),
+  const Choice(title: 'Tuesday', icon: Icons.directions_bike),
+  const Choice(title: 'Wednesday', icon: Icons.directions_boat),
+  const Choice(title: 'Thursday', icon: Icons.directions_bus),
+  const Choice(title: 'Friday', icon: Icons.directions_railway),
+];
+
+class ChoiceCard extends StatelessWidget {
+  const ChoiceCard({Key key, this.choice}) : super(key: key);
+
+  final Choice choice;
+
+  @override
+  Widget build(BuildContext context) {
+    final TextStyle textStyle = Theme.of(context).textTheme.display1;
+    return new Card(
+      color: Colors.white,
+      child: new Center(
+        child: new Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            new Icon(choice.icon, size: 128.0, color: textStyle.color),
+            new Text(choice.title, style: textStyle),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ScheduleScreenState extends State<ScheduleScreen> {
   // FIXME: DONT DUPLICATE CODE
   Drawer getNavDrawer(BuildContext context) {
     var headerChild = new DrawerHeader(
@@ -47,12 +85,12 @@ class ScheduleScreenState extends State<ScheduleScreen>{
 
     var myNavChildren = [
       headerChild,
-      getNavItem(Icons.home,     "Home",          "/"),
-      getNavItem(Icons.book,     "Lions Journal", LionsjournalScreen.routeName),
-      getNavItem(Icons.event,    "Calendar",      CalendarScreen.routeName),
-      getNavItem(Icons.language, "News",          NewsScreen.routeName),
-      getNavItem(Icons.schedule, "Schedule",      ScheduleScreen.routeName),
-      getNavItem(Icons.settings, "Settings",      SettingsScreen.routeName),
+      getNavItem(Icons.home, "Home", "/"),
+      getNavItem(Icons.book, "Lions Journal", LionsjournalScreen.routeName),
+      getNavItem(Icons.event, "Calendar", CalendarScreen.routeName),
+      getNavItem(Icons.language, "News", NewsScreen.routeName),
+      getNavItem(Icons.schedule, "Schedule", ScheduleScreen.routeName),
+      getNavItem(Icons.settings, "Settings", SettingsScreen.routeName),
       aboutChild
     ];
 
@@ -64,25 +102,37 @@ class ScheduleScreenState extends State<ScheduleScreen>{
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Center(child: new Text("ZIS Schedule", style: new TextStyle(
-            fontWeight: FontWeight.bold, color: Colors.yellow))),
-        backgroundColor: new Color(0xFF005A84),
-        iconTheme: new IconThemeData(color: Colors.yellow),
+    return
+        new DefaultTabController(
+      length: choices.length,
+      child: new Scaffold(
+        appBar: new AppBar(
+          title: new Center(
+              child: new Text("ZIS Schedule",
+                  style: new TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.yellow))),
+          bottom: new TabBar(
+            isScrollable: true,
+            tabs: choices.map((Choice choice) {
+              return new Tab(
+                text: choice.title,
+                //icon: new Icon(choice.icon),
+              );
+            }).toList(),
+          ),
+          backgroundColor: new Color(0xFF005A85),
+          iconTheme: new IconThemeData(color: Colors.yellow),
+        ),
+        drawer: getNavDrawer(context),
+        body: new TabBarView(
+          children: choices.map((Choice choice) {
+            return new Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: new ChoiceCard(choice: choice),
+            );
+          }).toList(),
+        ),
       ),
-      body: new ListView(
-          children: [
-            new Image.asset(
-                'images/zis_9861.jpg',
-                fit:BoxFit.cover),
-            new Center(
-                child: new Text("Blah blah blah",
-                    style: new TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold))
-            )
-          ]
-      ),
-      drawer: getNavDrawer(context),
     );
   }
 }
