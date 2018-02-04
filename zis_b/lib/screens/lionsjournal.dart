@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:zis_b/screens/schedule.dart';
 import 'package:zis_b/screens/news.dart';
 import 'package:zis_b/screens/calendar.dart';
 import 'package:zis_b/screens/settings.dart';
-import 'package:zis_b/screens/lionsjournal.dart';
+import 'package:zis_b/screens/schedule.dart';
 
-class HomeScreen extends StatefulWidget {
+class LionsjournalScreen extends StatefulWidget {
+  static const String routeName = "/lionsjournal";
   @override
-  HomeScreenState createState() => new HomeScreenState();
+  LionsjournalScreenState createState() => new LionsjournalScreenState();
 }
 
-class HomeScreenState extends State<HomeScreen> {
+class LionsjournalScreenState extends State<LionsjournalScreen>{
   // FIXME: DONT DUPLICATE CODE
   Drawer getNavDrawer(BuildContext context) {
     var headerChild = new DrawerHeader(
@@ -47,12 +47,12 @@ class HomeScreenState extends State<HomeScreen> {
 
     var myNavChildren = [
       headerChild,
-      getNavItem(Icons.home,     "Home",          "/"),
-      getNavItem(Icons.book,     "Lions Journal", LionsjournalScreen.routeName),
-      getNavItem(Icons.event,    "Calendar",      CalendarScreen.routeName),
-      getNavItem(Icons.language, "News",          NewsScreen.routeName),
-      getNavItem(Icons.schedule, "Schedule",      ScheduleScreen.routeName),
-      getNavItem(Icons.settings, "Settings",      SettingsScreen.routeName),
+      getNavItem(Icons.home,     "Home",         "/"),
+      getNavItem(Icons.schedule, "Schedule",     ScheduleScreen.routeName),
+      getNavItem(Icons.language, "News",         NewsScreen.routeName),
+      getNavItem(Icons.event,    "Calendar",     CalendarScreen.routeName),
+      getNavItem(Icons.schedule, "Lionsjournal", LionsjournalScreen.routeName),
+      getNavItem(Icons.settings, "Settings",     SettingsScreen.routeName),
       aboutChild
     ];
 
@@ -66,19 +66,22 @@ class HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-          title: new Center(
-              child: new Text("ZIS Home",
-                  style: new TextStyle(
-                      fontWeight: FontWeight.bold, color: Colors.yellow))),
-          backgroundColor: new Color(0xFF005A84),
-          iconTheme: new IconThemeData(color: Colors.yellow)),
-      body: new ListView(children: [
-        new Image.asset('images/zis_0071.jpg', fit: BoxFit.cover),
-        new Center(
-            child: new Text("Blah blah blah",
-                style:
-                    new TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold)))
-      ]),
+        title: new Center(child: new Text("ZIS Lionsjournal", style: new TextStyle(
+            fontWeight: FontWeight.bold, color: Colors.yellow))),
+        backgroundColor: new Color(0xFF005A84),
+        iconTheme: new IconThemeData(color: Colors.yellow),
+      ),
+      body: new ListView(
+          children: [
+            new Image.asset(
+                'images/zis_Upper-School.jpg',
+                fit:BoxFit.cover),
+            new Center(
+                child: new Text("Blah blah blah",
+                    style: new TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold))
+            )
+          ]
+      ),
       drawer: getNavDrawer(context),
     );
   }
