@@ -1,6 +1,6 @@
 # zis_b
 
-Variant B of the ZIS Mobile App
+Variant B ZIS App
 
 ## Getting Started
 
