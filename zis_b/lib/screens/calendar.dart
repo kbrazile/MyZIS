@@ -74,7 +74,7 @@ class CalendarScreenState extends State<CalendarScreen> {
       body: new ListView(
           children: [
             new Image.asset(
-                'images/zis_1498.jpg',
+                'images/zis_1498.png',
                 fit:BoxFit.cover),
             new Center(
                 child: new Text("Blah blah blah",

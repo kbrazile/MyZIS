@@ -74,7 +74,7 @@ class NewsScreenState extends State<NewsScreen> {
       body: new ListView(
           children: [
             new Image.asset(
-                'images/zis_2567_130.jpg',
+                'images/zis_2567_130.png',
                 fit:BoxFit.cover),
             new Center(
                 child: new Text("Blah blah blah",

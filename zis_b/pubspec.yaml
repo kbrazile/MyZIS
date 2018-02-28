@@ -14,9 +14,9 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - images/zis_0071.jpg
-    - images/zis_1498.jpg
-    - images/zis_2567_130.jpg
-    - images/zis_30843.jpg
-    - images/zis_9861.jpg
-    - images/zis_Upper-School.jpg
+    - images/zis_0071.png
+    - images/zis_1498.png
+    - images/zis_2567_130.png
+    - images/zis_30843.png
+    - images/zis_9861.png
+    - images/zis_Upper-School.png

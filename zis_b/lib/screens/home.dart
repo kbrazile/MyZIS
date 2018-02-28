@@ -73,7 +73,7 @@ class HomeScreenState extends State<HomeScreen> {
           backgroundColor: new Color(0xFF005A84),
           iconTheme: new IconThemeData(color: Colors.yellow)),
       body: new ListView(children: [
-        new Image.asset('images/zis_0071.jpg', fit: BoxFit.cover),
+        new Image.asset('images/zis_0071.png', fit: BoxFit.cover),
         new Center(
             child: new Text("Blah blah blah",
                 style:

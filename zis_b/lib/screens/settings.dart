@@ -73,7 +73,7 @@ class SettingsScreenState extends State<SettingsScreen> {
       body: new ListView(
           children: [
             new Image.asset(
-                'images/zis_9861.jpg',
+                'images/zis_9861.png',
                 fit:BoxFit.cover),
             new Center(
                 child: new Text("Blah blah blah",

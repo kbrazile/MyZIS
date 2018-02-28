@@ -74,7 +74,7 @@ class LionsjournalScreenState extends State<LionsjournalScreen>{
       body: new ListView(
           children: [
             new Image.asset(
-                'images/zis_Upper-School.jpg',
+                'images/zis_Upper-School.png',
                 fit:BoxFit.cover),
             new Center(
                 child: new Text("Blah blah blah",
